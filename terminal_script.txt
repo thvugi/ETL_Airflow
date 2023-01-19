@@ -1,0 +1,59 @@
+#This is the list of commands ran in the terminal 
+
+#to go to the aws machine
+ssh -i "airflow_ec2_key.pem" ubuntu@ec2-3-82-98-78.compute-1.amazonaws.com
+
+#prerequisite commands to run before starting airflow 
+sudo apt-get update
+sudo apt-get upgrade
+sudo reboot
+
+#your machine will reboot so log back onto it after it has rebooted
+
+#now installing the necessary packages
+sudo apt install python3_pip
+sudo pip install apache-airflow
+sudo pip install pandas
+sudo pip install s3fs
+sudo pip install plotly
+sudo pip install tweepy
+sudo pip install matplotlib
+sudo pip install sklearn
+sudo pip install bs4
+sudo pip install datetime
+sudo pip install logging
+sudo pip install wordcloud
+sudo pip install summarizer
+
+
+#after installing all of these launch the airflow web api make sure you have at least 4GB of RAM in order to run
+airflow standalone
+
+#a password and username will generate 
+#go to the machine url in port 8080 so 
+ubuntu@ec2-3-82-98-78.compute-1.amazonaws.com:8080
+
+#go into a new terminal and enter the machine 
+cd airflow
+sudo nano airflow.cfg 
+
+#here change the dag file to the name of the dag file name you want to username then save and exit 
+mkdir twitter_dag #in this case our dag file will be "ETL_dag"
+cd ETL_dag
+
+#now make two more files where you will insert your etl and dag code 
+
+sudo nano twitter_etl.py
+#copy and paste your code
+
+sudo nano amazon_etl.py
+#copy and paste your code
+
+
+sudo nano dags.py
+#copy and paste your code
+
+#reboot the server and you're done!
+
+
+
